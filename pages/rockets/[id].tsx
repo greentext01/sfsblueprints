@@ -12,7 +12,7 @@ const Rocket = () => {
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const rocket = await db.blueprint.findUnique({
     where: {
-      id: ctx.params
+      
     }
   })
 

@@ -1,6 +1,5 @@
 import { Blueprint } from "@prisma/client";
 import type { GetServerSideProps, NextPage } from "next";
-import Head from "next/head";
 import Link from "next/link";
 import { db } from "../lib/db";
 

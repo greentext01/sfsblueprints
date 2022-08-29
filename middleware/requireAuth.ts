@@ -9,9 +9,10 @@ export const requireAuth: RequestHandler<
 > = async (req, res, next) => {
   const user = await unstable_getServerSession(req, res, authConfig);
 
-  if (!user) res.status(403).send("Not logged in");
+  if (!user)
+    res.status(403).send("Not logged in");
   else {
-    req.user = user
+    req.user = user;
     next();
   }
 };

@@ -17,6 +17,6 @@ export const authConfig: NextAuthOptions = {
       return session;
     },
   },
-}
+};
 
 export default NextAuth(authConfig);

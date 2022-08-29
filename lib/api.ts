@@ -3,16 +3,13 @@ import nextConnect, { ErrorHandler } from "next-connect";
 
 const onError: ErrorHandler<NextApiRequest, NextApiResponse<any>> = (
   err,
-  req,
+  _,
   res,
   next
 ) => {
-  if (process.env.NODE_ENV !== "production") {
-    throw new Error(err);
-  } else {
-    res.status(500).end(err.toString());
-    next();
-  }
+  console.log(err)
+  res.status(500).end(err.toString());
+  next();
 };
 
 export function api() {

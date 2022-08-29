@@ -6,17 +6,18 @@ const Home: NextPage = () => {
   return (
     <Formik
       initialValues={{ title: "", url: "" }}
-      onSubmit={(values, { setSubmitting, setFieldError }) => {
+      onSubmit={async (values, { setSubmitting, setFieldError }) => {
         setSubmitting(true);
-        fetch("/api/rockets/new", {
+        await fetch("/api/rockets/new", {
           method: "post",
           body: JSON.stringify(values),
           headers: {
             "Content-Type": "application/json",
           },
         })
+          .then((res) => res.json())
           .then((res) => {
-            if (!res.ok) setFieldError("url", "Please add a valid URL");
+            if (!res.ok) setFieldError(res, "Please add a valid URL");
           })
           .then(() => setSubmitting(false))
           .catch(() => setFieldError("url", "Please add a valid URL"));
